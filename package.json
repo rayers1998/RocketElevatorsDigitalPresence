@@ -1,0 +1,23 @@
+{
+  "name": "basic_js_exercises",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sbklopp/Basic_JS_Exercises.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sbklopp/Basic_JS_Exercises/issues"
+  },
+  "homepage": "https://github.com/Sbklopp/Basic_JS_Exercises#readme",
+  "dependencies": {
+    "jest": "^29.5.0"
+  }
+}
