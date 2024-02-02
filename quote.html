@@ -25,6 +25,7 @@
   <!-- THEME CSS -->
   <link href="assets/css/essentials.css" rel="stylesheet" type="text/css" />
   <link href="assets/css/layout.css" rel="stylesheet" type="text/css" />
+  <link href="assets/css/quote.css" rel="stylesheet" type="text/css" />
 
   <!-- PAGE LEVEL SCRIPTS -->
   <link href="assets/css/header-1.css" rel="stylesheet" type="text/css" />
@@ -142,14 +143,182 @@
 
     </div>
   </header>
-  <!-- /Top Nav -->
 
+
+<!-- /Top Nav -->
+
+
+</div> 
+
+
+<br>
+<br>
+
+<!--QUOTE FORM-->
+
+
+<style>
+  /* Add this style to set a fixed width for the buttons */
+  .btn {
+    width: 150px; /* Adjust the width according to your preference */
+  }
+</style>
+
+
+<!--Building Type Selection-->
+
+<div class="container" id="building-type">
+  <h2 class="question-text">What type of building are you interested in?</h2>
+  <button class="btn btn-primary btn-lg" type="button" id="residential">Residential</button>
+  <button class="btn btn-info btn-lg" type="button" id="commercial">Commercial</button>
+  <button class="btn btn-danger btn-lg" type="button" id="industrial">Industrial</button>
+ </div>
+  
+ <br>
+ 
+<!--Input Fields-->
+
+<style>
+  .input-field label {
+      display: block;
+      margin-left: 250px; /* Adjust this value to increase or decrease the indentation */
+  }
+  #floors-input {
+        margin-left: 250px; /* Adjust this value to increase or decrease the indentation */
+    }
+</style>
+<div id="number-of-floors" class="input-field">
+  <label>How many floors are in the building?</label>
+  <input id="floors-input" type="text" placeholder="20"/>
 </div>
 
+ <br>
+ 
+<style>
+  .input-field label {
+      display: block;
+      margin-left: 250px; /* Adjust this value to increase or decrease the indentation */
+  }
+  #apartments-input {
+        margin-left: 250px; /* Adjust this value to increase or decrease the indentation */
+    }
+</style>
+<div id="number-of-apartments" class="input-field">
+  <label>How many apartments are in the building?</label>
+  <input id="apartments-input" type="text" placeholder="20" />
+</div>
 
 <br>
-<br>
+ 
+<style>
+  .input-field label {
+      display: block;
+      margin-left: 250px; /* Adjust this value to increase or decrease the indentation */
+  }
+  #occupancy-input {
+        margin-left: 250px; /* Adjust this value to increase or decrease the indentation */
+    }
+</style>
+<div id="maximum-occupancy" class="input-field">
+  <label>What is the maximum occupancy for a floor in the building?</label>
+  <input id="occupancy-input" type="text" placeholder="20" />
+</div>
 
+<br>
+ 
+<style>
+  .input-field label {
+      display: block;
+      margin-left: 250px; /* Adjust this value to increase or decrease the indentation */
+  }
+  #elevators-input {
+        margin-left: 250px; /* Adjust this value to increase or decrease the indentation */
+    }
+</style>
+<div id="number-of-elevators" class="input-field">
+  <label>How many elevators service the building?</label>
+  <input id="elevators-input" type="text" placeholder="20" />
+</div>
+
+<br>
+ 
+<div class="container" id="building-type">
+  <h2 class="question-text">What service package are you requesting?</h2>
+  <button class="btn btn-primary btn-lg" type="button" id="residential">Standard</button>
+  <button class="btn btn-info btn-lg" type="button" id="commercial">Excelium</button>
+  <button class="btn btn-danger btn-lg" type="button" id="industrial">Premium</button>
+ </div>
+
+ <br>
+ 
+<!--OUTPUT FIELDS-->
+
+<style>
+  #number-of-floors-output label {
+      display: block;
+      margin-left: 250px; /* Adjust this value to increase or decrease the indentation */
+  }
+  #elevators-needed-output {
+        margin-left: 250px; /* Adjust this value to increase or decrease the indentation */
+    }
+</style>
+</style>
+<div id="number-of-floors-output">
+  <label>Number of Elevators Needed</label>
+  <input id="elevators-needed-output" type="text" readonly>
+ </div>
+ 
+ <br>
+ 
+ <style>
+  #unit-price-output label {
+      display: block;
+      margin-left: 250px; /* Adjust this value to increase or decrease the indentation */
+  }
+  #unit-price-each-elevator {
+        margin-left: 250px; /* Adjust this value to increase or decrease the indentation */
+    }
+</style>
+ <div id="unit-price-output">
+  <label>Unit Price of Each Elevator</label>
+  <input id="unit-price-each-elevator" type="text" readonly>
+ </div>
+
+ <br>
+ 
+ <style>
+  #installation-fees-output label {
+      display: block;
+      margin-left: 250px; /* Adjust this value to increase or decrease the indentation */
+  }
+  #installation-fees {
+        margin-left: 250px; /* Adjust this value to increase or decrease the indentation */
+    }
+</style>
+ <div id="installation-fees-output">
+  <label>Installation Fees</label>
+  <input id="installation-fees" type="text" readonly>
+ </div>
+ 
+ <br>
+ 
+ <style>
+  #final-cost-output label {
+      display: block;
+      margin-left: 250px; /* Adjust this value to increase or decrease the indentation */
+  }
+  #final-cost {
+        margin-left: 250px; /* Adjust this value to increase or decrease the indentation */
+    }
+</style>
+ <div id="final-cost-output">
+  <label>Final Cost</label>
+  <input id="final-cost" type="text" readonly>
+ </div>
+ 
+ <br>
+
+<!-- ORIGINAL QUOTE FORM
 
 <div class="form-check form-check-inline">
   <input class="form-check-input" type="radio" id="residentialBuilding" name="radioGroup" value="option1">
@@ -170,30 +339,29 @@
 
 
 <div class="input-field">
-  <label for="formGroupExampleInput" class="input-field">How many apartments are on each floor?</label>
+  <label for="formGroupExampleInput" class="input-field">Number of Apartments</label>
   <input type="text" class="input-field" id="numberOfApartments" placeholder="" />
-
 </div>
 
 <br>
 
 <div class="mb-3">
-  <label for="formGroupExampleInput2" class="input-field">How many floors are in your building?</label>
+  <label for="formGroupExampleInput2" class="input-field">Number of Floors</label>
   <input type="text" class="input field" id="numberOfFloors" placeholder="">
 </div>
 
 <br>
 
 <div class="input-field">
-  <label for="formGroupExampleInput" class="input-field">If Industrial, how many elevators are present?</label>
-  <input type="text" class="input-field" id="numberOfElevatorsPresent" placeholder="" />
+  <label for="formGroupExampleInput" class="input-field">Maximum Occupancy</label>
+  <input type="text" class="input-field" id="maximum-Occuoancy" placeholder="" />
 </div>
 
 <br>
 
 <div class="mb-3">
-  <label for="formGroupExampleInput2" class="input-field">What's the maximum-occupancy of each floor?</label>
-  <input type="text" class="input field" id="maxOccupancyOfEachFloor" placeholder="">
+  <label for="formGroupExampleInput2" class="input-field">Number of Elevators</label>
+  <input type="text" class="input field" id="numberOfElevators" placeholder="">
 </div>
 
 
@@ -246,21 +414,13 @@
 <div class="mb-3">
   <label for="formGroupExampleInput2" class="form-label">Final cost estimate.</label>
   <input type="text" readonly class="input field" id="final-cost-estimate" placeholder="">
-</div>
+
+</div>I am a place holder!</div>
 
 
+-->
 
-
-
-
-
-
-
-
-
-
-
-
+<!--/END OF QUOTE FORM-->
 
 
 <!-- FOOTER -->
@@ -331,5 +491,21 @@
 <!-- /wrapper -->
 
 
-<!-- QUOTE JAVASCRIPT FILE-->
+
+
+<!-- JAVASCRIPT FILES -->
+<script>var plugin_path = 'assets/plugins/';</script>
+<script src="assets/plugins/jquery/jquery-3.3.1.min.js"></script>
+
+<script src="assets/js/scripts.js"></script>
+
+<!-- QUOTE FORM JAVASCRIPT-->
+
 <script src="assets/js/quote.js"></script>
+
+</body>
+</html>
+
+
+
+

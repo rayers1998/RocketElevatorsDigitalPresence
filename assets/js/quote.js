@@ -1,22 +1,41 @@
-// 1) declare our variables
+// In this sheet is where most of the action is.
+
+// This sheet needs to do several things:
+// 1. It needs to show and hide fields depending on what I pick.
+// 2. It needs to do calculations depending on what is entered.
+// 3. It needs to relay results.
+// LINK THIS PAGE BY ID'S ON HTML PAGE BY GRABBING THOSE VARIABLES (those parts of the sheet)
+
+const buildingType = document.getElementById("building-type");
+const qualityType = document.getElementById("quality-type");
 
 
 // building type buttons
-const residentialButton = document.getElementById("residentialBuilding");
+const residentialButton = document.getElementById("residential");
 
-const commercialButton = document.getElementById("commercialBuilding");
+const numberOfApartments = document.getElementById("number-of-apartments");
+const numberOfFloors = document.getElementById("number-of-floors");
 
-const industrialButton = document.getElementById("industrialBuilding");
+const standardButton = document.getElementById("standard");
+
+const elevatorOutput = document.getElementById("elevators-needed-output");
+const unitPriceOutput = document.getElementById("unit-price-output");
+const installFeeOutput = document.getElementById("unit-price-output");
+const finalCostOutput = document.getElementById("final-cost-output")
+
+
+//const commercialButton = document.getElementById("commercial");
+//const industrialButton = document.getElementById("industrial");
 
 // input fields
-const numberOfApartments = document.getElementById("numberOfApartments");
-const numberOfFloors = document.getElementById("numberOfFloors");
-const maxOccupancyOfEachFloor = document.getElementById("max-OccupancyOfEachFloor");
-const numberOfElevators = document.getElementById("numberOfElevatorsPresent");
+
+
+const maxOccupancyOfEachFloor = document.getElementById("maximum-occupancy");
+const numberOfElevators = document.getElementById("number-of-elevators");
 
 
 // product tier unit price per elevator
-const standardButton = document.getElementById("standard");
+
 const premiumButton = document.getElementById("premium");
 const exceliumButton = document.getElementById("excelium");
 
@@ -37,10 +56,10 @@ const installationFeePercentage = {
 
 
 // output fields
-const elevatorsRequired = document.getElementById("numberOfRequiredElevators");
-const elevatorUnitPrice = document.getElementById("pricePerElevator");
-const installationFees = document.getElementById("installationFees");
-const finalCost = document.getElementById("finalCostEstimate");
+//const elevatorsRequired = document.getElementById("numberOfRequiredElevators");
+//const elevatorUnitPrice = document.getElementById("pricePerElevator");
+//const installationFees = document.getElementById("installationFees");
+//const finalCost = document.getElementById("finalCostEstimate");
 
 // ----------------------------------------------------------------------------------------------------------------
 
