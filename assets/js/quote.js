@@ -1,52 +1,103 @@
-// In this sheet is where most of the action is.
+//STEP 1
 
-// This sheet needs to do several things:
-// 1. It needs to show and hide fields depending on what I pick.
-// 2. It needs to do calculations depending on what is entered.
-// 3. It needs to relay results.
-// LINK THIS PAGE BY ID'S ON HTML PAGE BY GRABBING THOSE VARIABLES (those parts of the sheet)
-
+//Variables for dropdown selection
 const buildingType = document.getElementById("building-type");
 const qualityType = document.getElementById("quality-type");
 
-
-// building type buttons
 const residentialButton = document.getElementById("residential");
+const commercialButton = document.getElementById("commercial");
+const industrialButton = document.getElementById("industrial");
 
-const numberOfApartments = document.getElementById("number-of-apartments");
+//Variables for Input Services
 const numberOfFloors = document.getElementById("number-of-floors");
-
-const standardButton = document.getElementById("standard");
-
-const elevatorOutput = document.getElementById("elevators-needed-output");
-const unitPriceOutput = document.getElementById("unit-price-output");
-const installFeeOutput = document.getElementById("unit-price-output");
-const finalCostOutput = document.getElementById("final-cost-output")
-
-
-//const commercialButton = document.getElementById("commercial");
-//const industrialButton = document.getElementById("industrial");
-
-// input fields
-
-
-const maxOccupancyOfEachFloor = document.getElementById("maximum-occupancy");
+const numberOfApartments = document.getElementById("number-of-apartments");
+const  maxOccupancyOfEachFloor = document.getElementById("maximum-occupancy");
 const numberOfElevators = document.getElementById("number-of-elevators");
 
+//Variables for Radio Section
+let standardButton = document.getElementById("standard");
+let premiumButton = document.getElementById("premium");
+let exceliumButton = document.getElementById("excelium");
 
-// product tier unit price per elevator
+//Variables for Results Section
+let elevatorOutput = document.getElementById("elevators-needed-output");
+let unitPriceOutput = document.getElementById("unit-price-each-elevator");
+let installFeeOutput = document.getElementById("installation-fees");
+let finalCostOutput = document.getElementById("final-cost");
 
-const premiumButton = document.getElementById("premium");
-const exceliumButton = document.getElementById("excelium");
+//Variables for Display Containers
+const inputContainer = document.getElementById("inputContainer")
+const qualityContainer = document.getElementById("qualityContainer")
+const outputContainer = document.getElementById("outputContainer")
 
-// Business rules
+
+//Function to calculate "Elevators Required" - Residential Service 
+function calcRes() {
+  const averageNumberOfApartments = Math.ceil(Number(apartmentInput.value)) / Math.ceil(Number(floorInput.value));
+  const numberOfResElevators = Math.ceil(averageNumberOfApartments / 6);
+  const numberOfResBanks = Math.ceil(Number(floorInput.value / 20));
+  console.log (averageNumberOfApartments, numberOfResElevators, numberOfResBanks);
+  
+  return elevatorOutput.value = Math.ceil(numberOfResElevators * numberOfResBanks);}
+//"If the type of building is Residential, divide the number of apartments by the number of floors to obtain an average number of apartments per floor and require an elevator for every 6 apartments per floor.
+//If the building has more than 20 stories, it is necessary to provide an additional elevator bank and thus double the number of elevators. 
+//A new elevator bank is therefore added to each new group of 20 stories."
+
+
+//Function to calculate "Elevators Required" - Commercial Service 
+function calcCom() {
+  const numOfTotalOccupants = (Number(maxOccupancyOfEachFloor)) * (Number(numberOfFloors));
+  const numberOfComElevatorBanks = (Number(numOfTotalOccupants) / 200);
+  const numberOfComBanksRequired = (Number(numberOfFloors) / 10) + 1;
+  console.log (maxOccupancyOfEachFloor, numberOfFloors);
+  return elevatorOutput.value = Math.ceil(numberOfComElevatorBanks * numberOfComBanksRequired);
+}
+//"If the type of building is Commercial, multiply the maximum occupancy of each floor by the number of floors to obtain the total number of occupants. 
+//The number of elevators required per elevator bank is determined by dividing the total number of occupants by 200. 
+//The number of elevator banks required is determined by dividing the number of floors divided by 10. 
+//For commercial buildings, to obtain the number of freight elevators needed use the number of floors divided by 10 plus one."
+
+
+//Function to calculate "Elevators Required" - Industrial Service
+function calcInd() {
+  const numberOfElevators = (Number(numberOfElevators));
+  console.log (numberOfElevators);
+  return elevatorsRequired.value = Math.ceil(numberOfElevators);
+}
+//"If the type of building is Industrial, the number of elevators required is equal to the number as the input."
+
+
+//Function to handle changes to number inputs based on dropdown value + SHOW/HIDE element
+const apartmentInput = document.getElementById("apartments-input");
+const floorInput = document.getElementById("floors-input");
+const occupancyInput = document.getElementById("occupancy-input")
+const elevatorInput = document.getElementById("elevator-input")
+
+
+//Building Type and it's variables
+const buildingTypeFields = {
+  residential: [
+      "number-of-apartments",
+      "number-of-floors",
+  ],
+  commercial: [
+      "number-of-floors",
+      "maximum-occupancy",
+  ],
+  industrial: [
+      "number-of-elevators",
+  ]
+};
+
+
+//Quality Type Prices
 const pricePerElevator = {
   'standard': 8000,
   'premium': 12000,
   'excelium': 15000
 };
 
-// installation fees
+//Installation fees
 const installationFeePercentage = {
   'standard': 10,
   'premium': 15,
@@ -54,135 +105,121 @@ const installationFeePercentage = {
 };
 
 
+function hideSheet() {
+  inputContainer.style.display = "none"
+  outputContainer.style.display = "none"
+  qualityContainer.style.display = "none"
+ }
+hideSheet()
 
-// output fields
-//const elevatorsRequired = document.getElementById("numberOfRequiredElevators");
-//const elevatorUnitPrice = document.getElementById("pricePerElevator");
-//const installationFees = document.getElementById("installationFees");
-//const finalCost = document.getElementById("finalCostEstimate");
+//-------------------------------------------------------------------------------------------------------------------------------------
+//STEP 2 add event listeners!
 
-// ----------------------------------------------------------------------------------------------------------------
-
-// 2) add event listeners!
-
-// waits for the residential button to be clicked
+// Event Listener for the residential button to be clicked
 residentialButton.addEventListener("click", () => {
-  // showing an html element
+  console.log("Residential button clicked");
+  numberOfElevators.style.display = "none";
   numberOfApartments.style.display = "block";
-  // hiding an html element
-  // commercialButton.style.display = "none";
-  // industrialButton.style.display = "none";
-  //showing an html element
+  commercialButton.style.display = "block";
+  industrialButton.style.display = "block";
   numberOfFloors.style.display = "block";
-  //showing an html element
   maxOccupancyOfEachFloor.style.display = "none";
 
-  console.log("You clicked the residential button!");
+  inputContainer.style.display = "block"
+  outputContainer.style.display = "block"
+  qualityContainer.style.display = "block"
+  
+  apartmentInput.addEventListener("input", () => {
+    calcRes(); 
+    priceCheck();
+    console.log("I did residentiaL math");
+    })
+    floorInput.addEventListener("input", () => {
+    calcRes(); 
+    priceCheck();
+      console.log("I did residentiaL math");
+    })
+    maxOccupancyOfEachFloor.addEventListener("input", () => {
+    calcCom(); 
+    priceCheck();
+      console.log("I did residentiaL math");
+    })
+    elevatorInput.addEventListener("input", () => {
+      calcCom(); 
+      priceCheck();
+        console.log("I did residentiaL math");
+      })
 
+  resetValues();
+  console.log("You clicked the residential button!");
 })
 
-//waits for the commercial button to be clicked
+
+  
+
+
+// Event listener for the commercial button to be clicked
 commercialButton.addEventListener("click", () => {
-  //showing an html element
+  console.log("commercial button clicked");
+  numberOfElevators.style.display = "none";
   numberOfApartments.style.display = "none";
   numberOfFloors.style.display = "block";
   maxOccupancyOfEachFloor.style.display = "block";
-
+  
+  inputContainer.style.display = "block";
+  outputContainer.style.display = "block";
+  qualityContainer.style.display = "block";
+  
+  resetValues();
   console.log("You clicked the commercial button!");
-
 })
 
-//waits for the industrial biutton to be clicked
+// Event listener for the industrial button to be clicked
 industrialButton.addEventListener("click", () => {
-  //showing an html element
+  console.log("industrial button clicked");
+  numberOfElevators.style.display = "block";
   numberOfApartments.style.display = "none";
   numberOfFloors.style.display = "none";
-  numberOfElevators.style.display = "block";
   maxOccupancyOfEachFloor.style.display = "none";
-
+  
+  inputContainer.style.display = "block";
+  outputContainer.style.display = "block";
+  qualityContainer.style.display = "block";
+  
+  resetValues();
   console.log("You clicked the industrial button!");
-
 })
 
+function priceCheck(){
 standardButton.addEventListener("click", () => {
-  //showing an html element
-  elevatorsRequired.style.display = "none";
-  pricePerElevator.style.display = "block";
-  installationFees.style.display = "block";
-  finalCost.style.display = "none";
-
-
+unitPriceOutput.value = 8000;
+installFeeOutput.value = 1.1;
+finalPrice()
+console.log("Standard")
 })
 
 premiumButton.addEventListener("click", () => {
-  //showing an html element
-  numberOfElevators.style.display = "none";
-  pricePerElevator.style.display = "block";
-  installationFees.style.display = "block";
-  finalCost.style.display = "none";
-
+  unitPriceOutput.value = 12000;
+  installFeeOutput.value = 1.15;
+  finalPrice()
 })
 
+exceliumButton.addEventListener("click", () => {
+  unitPriceOutput.value = 15000;
+  installFeeOutput.value = 1.2;
+  finalPrice()
+})
+}
+priceCheck()
+
 // -------------------------------------------------------------------------------------------------------------
-
-// 3) write out functions that do things
-
-// hiding/displaying of the fields
-
-function hideSheet() {
-  standardButton.style.display = "none";
-  premiumButton.style.display = "none";
-  exceliumButton.style.display = "none";
-  numberOfApartments.style.display = "none";
-  numberOfFloors.style.display = "none";
-  maxOccupancyOfEachFloor.style.display = "none";
-  numberOfElevators.style.display = "none";
-  installationFees.style.display = "none";
-  finalCost.style.display = "none";
-
-}
-hideSheet()
-
-// calculations 
-
-// const numberOfApartments = document.getElementById("numberOfApartments");
-// const numberOfFloors = document.getElementById("numberOfFloors");
-// const maxOccupancyOfEachFloor = document.getElementById("max-OccupancyOfEachFloor")
-// const numberOfElevators = document.getElementById("numberOfElevatorsPresent");
-
-// output fields
-// const elevatorsRequired = document.getElementById("numberOfRequiredElevators");
-
-function calcRes() {
-  const averageNumberOfApartments = Math.ceil(numberOfApartments) / Math.ceil(numberOfFloors);
-  const numberOfResElevators = Math.ceil(averageNumberOfApartments / 6);
-  const numberOfResBanks = Math.ceil(numberOfFloors / 20);
-  return elevatorsRequired.value = Math.ceil(numberOfResElevators * numberOfResBanks);
-}
-
-// "If the type of building is Residential, divide the number of apartments by the number of floor to obtain and an average number of apartments per floor and require an elevator for every 6 apartments per floor. If the building has more than 20 stories, it is necessary to provide an additional elevator bank and thus double the number of elevators. A new elevator bank is therefore added to each new group of 20 stories."
-
-function calcCom() {
-  const numOfTotalOccupants = (maxOccupancyOfEachFloor) * (numberOfFloors);
-  const numberOfComElevatorBanks = (numOfTotalOccupants / 200);
-  const numberOfComBanksRequired = (numberOfFloors / 10) + 1;
-  return elevatorsRequired.value = Math.ceil(numberOfComElevatorBanks * numberOfComBanksRequired);
-}
-
-// "If the type of building is Commercial, multiply the maximum occupancy of each floor by the number of floors to obtain the total number of occupants. The number of elevators required per elevator bank is determined by dividing the total number of occupants by 200. The number of elevator banks required is determined by dividing the number of floors divided by 10. For commercial buildings, to obtain the number of freight elevators needed use the number of floors divided by 10 plus one."
-
-function calcInd() {
-  const numberOfElevators = numberOfElevators;
-  return elevatorsRequired.value = Math.ceil(numberOfElevators);
-}
-
-// "If the type of building is Industrial, the number of elevators required is equal to the number as the input."
+//STEP 3
 
 // functions to set up product tier
-function productTierSetUp(productTier) {
-  if (productTier === 'standard') {
+function qualityTypeTypeSetUp(qualityType) {
+  if (qualityType === 'standard') {
     return 'product standard tier set up configuration';
-  } else if (productTier === 'premium') {
+  } else if (qualityType === 'premium') {
     return 'product premium tier set up configuration';
   } else if (qualityType === 'excelium') {
     return 'product excelium tier set up configuration';
@@ -193,7 +230,7 @@ function productTierSetUp(productTier) {
 
 // total price function
 function finalPrice() {
-  finalPrice.value = elevatorsRequired * elevatorUnitPrice + installationFeePercentage
+  finalCostOutput.value = elevatorOutput.value * unitPriceOutput.value * installFeeOutput.value
 }
 
 // resets the form back to the start
