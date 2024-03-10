@@ -1,0 +1,9 @@
+.item-box-client img {
+    border: 10px solid #ffffff;
+    height: 200px; /* Adjust the height as needed */ /* PORTFOLIO space between image, You can adjust the border width and color as needed */
+    width: 500px;
+}
+
+.item-box img {
+    border: 20px solid #ffffff; /* PORTFOLIO space between image, You can adjust the border width and color as needed */
+}
