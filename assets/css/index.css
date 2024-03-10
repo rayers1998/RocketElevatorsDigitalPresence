@@ -7,3 +7,10 @@
 .item-box img {
     border: 20px solid #ffffff; /* PORTFOLIO space between image, You can adjust the border width and color as needed */
 }
+
+.item-box-client-adjust img {
+    border: 10px solid #ffffff;
+    height: 100px; /* Adjust the height as needed */ /* CLIENT space between image, You can adjust the border width and color as needed */
+    width: 100px
+}
+
