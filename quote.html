@@ -151,9 +151,12 @@ git         Example Usage:  class="clearfix sticky header-sm transparent b-0"
 
 <div class="container" id="building-type">
   <h2 class="question-text">What type of building are you interested in?</h2>
-  <button class="btn btn-primary btn-lg" type="button" id="residential">Residential</button>
-  <button class="btn btn-info btn-lg" type="button" id="commercial">Commercial</button>
-  <button class="btn btn-danger btn-lg" type="button" id="industrial">Industrial</button>
+  <button class="btn btn-primary btn-lg" type="button" id="residential" onclick="
+  selectButton('residential')">Residential</button>
+  <button class="btn btn-info btn-lg" type="button" id="commercial" onclick="
+  selectButton('commercial')">Commercial</button>
+  <button class="btn btn-danger btn-lg" type="button" id="industrial" onclick="
+  selectButton('industrial')">Industrial</button>
 </div>
 
 <br>
@@ -239,7 +242,8 @@ git         Example Usage:  class="clearfix sticky header-sm transparent b-0"
 <div id="qualityContainer">
   <div class="container" id="building-type">
     <h2 class="question-text">What service package are you requesting?</h2>
-    <button class="btn btn-primary btn-lg" type="button" id="standard" value="standard">Standard</button>
+    <button class="btn btn-primary btn-lg" type="button" id="standard" value="standard" onclick="
+    selectButton2('standard')">Standard</button>
     <button class="btn btn-info btn-lg" type="button" id="premium" value="premium">Premium</button>
     <button class="btn btn-danger btn-lg" type="button" id="excelium" value="excelium">Excelium</button>
   </div>

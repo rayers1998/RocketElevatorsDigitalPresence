@@ -119,36 +119,46 @@ hideSheet()
 residentialButton.addEventListener("click", () => {
   console.log("Residential button clicked");
   numberOfElevators.style.display = "none";
-  numberOfApartments.style.display = "block";
-  commercialButton.style.display = "block";
-  industrialButton.style.display = "block";
   numberOfFloors.style.display = "block";
+  numberOfApartments.style.display = "block";
   maxOccupancyOfEachFloor.style.display = "none";
-
-  inputContainer.style.display = "block"
-  outputContainer.style.display = "block"
-  qualityContainer.style.display = "block"
   
-  apartmentInput.addEventListener("input", () => {
-    calcRes(); 
-    priceCheck();
-    console.log("I did residentiaL math");
-    })
-    floorInput.addEventListener("input", () => {
-    calcRes(); 
-    priceCheck();
-      console.log("I did residentiaL math");
-    })
-    maxOccupancyOfEachFloor.addEventListener("input", () => {
-    calcCom(); 
-    priceCheck();
-      console.log("I did residentiaL math");
-    })
-    elevatorInput.addEventListener("input", () => {
-      calcCom(); 
-      priceCheck();
-        console.log("I did residentiaL math");
-      })
+  inputContainer.style.display = "block";
+  outputContainer.style.display = "block";
+  qualityContainer.style.display = "block";
+
+
+  // numberOfElevators.style.display = "none";
+  // numberOfApartments.style.display = "block";
+  // commercialButton.style.display = "block";
+  // industrialButton.style.display = "block";
+  // numberOfFloors.style.display = "block";
+  // maxOccupancyOfEachFloor.style.display = "none";
+
+  // inputContainer.style.display = "block"
+  // outputContainer.style.display = "block"
+  // qualityContainer.style.display = "block"
+  
+  // apartmentInput.addEventListener("input", () => {
+  //   calcRes(); 
+  //   priceCheck();
+  //   console.log("I did residentiaL math");
+  //   })
+  //   floorInput.addEventListener("input", () => {
+  //   calcRes(); 
+  //   priceCheck();
+  //     console.log("I did residentiaL math");
+  //   })
+  //   maxOccupancyOfEachFloor.addEventListener("input", () => {
+  //   calcCom(); 
+  //   priceCheck();
+  //     console.log("I did residentiaL math");
+  //   })
+  //   elevatorInput.addEventListener("input", () => {
+  //     calcCom(); 
+  //     priceCheck();
+  //       console.log("I did residentiaL math");
+  //     })
 
   resetValues();
   console.log("You clicked the residential button!");
@@ -241,3 +251,47 @@ function resetValues() {
   document.getElementById("numberOfElevatorsPresent").reset();
 
 } 
+
+
+
+// function to toggle button displays
+function selectButton(selectedId) {
+  // List of all button IDs
+  var allButtons = ['residential', 'commercial', 'industrial'];
+
+  // Loop through all button IDs
+  allButtons.forEach(function(btnId) {
+      // Get the button element by its ID
+      var button = document.getElementById(btnId);
+
+      // If the current button is not the selected one, hide it
+      if (btnId !== selectedId) {
+          button.style.display = 'none';
+      } else {
+          // Otherwise, make sure it is visible (in case it was previously hidden)
+          button.style.display = 'inline-block';
+      }
+  });
+}
+
+
+
+// function to toggle button displays
+function selectButton2(selectedId) {
+  // List of all button IDs
+  var allButtons = ['Standard', 'Premium', 'Excelium'];
+
+  // Loop through all button IDs
+  allButtons.forEach(function(btnId) {
+      // Get the button element by its ID
+      var button = document.getElementById(btnId);
+
+      // If the current button is not the selected one, hide it
+      if (btnId !== selectedId) {
+          button.style.display = 'none';
+      } else {
+          // Otherwise, make sure it is visible (in case it was previously hidden)
+          button.style.display = 'inline-block';
+      }
+  });
+}
