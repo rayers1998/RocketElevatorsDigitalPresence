@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="shortcut icon" type="images/png" href="assets/images/rocketElevators/icon.png"> <!-- newly added -->
+  <title>Rocket Elevators - Multipurpose + Admin</title>
+  <meta name="description" content="" />
+  <meta name="Author" content="Dorin Grigoras [www.stepofweb.com]" />
+
+  <!-- mobile settings -->
+  <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
+
+  <!-- WEB FONTS -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600%7CRaleway:300,400,500,600,700%7CLato:300,400,400italic,600,700"
+    rel="stylesheet" type="text/css" />
+
+  <!-- CORE CSS -->
+  <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+  <!-- REVOLUTION SLIDER -->
+  <link href="assets/plugins/slider.revolution/css/extralayers.css" rel="stylesheet" type="text/css" />
+  <link href="assets/plugins/slider.revolution/css/settings.css" rel="stylesheet" type="text/css" />
+
+  <!-- THEME CSS -->
+  <link href="assets/css/essentials.css" rel="stylesheet" type="text/css" />
+  <link href="assets/css/layout.css" rel="stylesheet" type="text/css" />
+  <link href="assets/css/quote.css" rel="stylesheet" type="text/css" /> <!--DO I NEED THIS LINK?-->
+
+  <!-- PAGE LEVEL SCRIPTS -->
+  <link href="assets/css/header-1.css" rel="stylesheet" type="text/css" />
+  <link href="assets/css/color_scheme/blue.css" rel="stylesheet" type="text/css" id="color_scheme" />
+</head>
+
+
+<!-- wrapper -->
+
+
+<!-- 
+        AVAILABLE HEADER CLASSES
+
+        Default nav height: 96px
+        .header-md 		= 70px nav height
+        .header-sm 		= 60px nav height
+
+        .b-0 		= remove bottom border (only with transparent use)
+        .transparent	= transparent header
+        .translucent	= translucent header
+        .sticky			= sticky header
+        .static			= static header
+        .dark			= dark header
+        .bottom			= header on bottom
+        
+        shadow-before-1 = shadow 1 header top
+        shadow-after-1 	= shadow 1 header bottom
+        shadow-before-2 = shadow 2 header top
+        shadow-after-2 	= shadow 2 header bottom
+        shadow-before-3 = shadow 3 header top
+        shadow-after-3 	= shadow 3 header bottom
+
+        .clearfix		= required for mobile menu, do not remove!
+git         Example Usage:  class="clearfix sticky header-sm transparent b-0"
+    -->
+<div id="header" class="navbar-toggleable-md sticky header-md clearfix">
+
+  <!-- TOP NAVIGATION BAR -->
+  <header id="topNav">
+    <div class="container">
+
+      <!-- Mobile Menu Button -->
+      <button class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse">
+        <i class="fa fa-bars"></i>
+      </button>
+
+      <!-- LOGO -->
+      <a class="logo float-left scrollTo" href="#top">
+        <img src="assets/images/rocketElevators/rocketLogo.png" alt="" />
+      </a>
+
+      <!-- Top Nav: AVAILABLE CLASSES: submenu-dark = dark sub menu -->
+      <div class="navbar-collapse collapse float-right nav-main-collapse submenu-dark">
+        <nav class="nav-main">
+          <!-- .nav-onepage Required for onepage navigation links Add .external for an external link!-->
+          <ul id="topMain" class="nav nav-pills nav-main nav-onepage">
+           
+            <li class="active"><!-- HOME -->
+              <a href="#home">
+                HOME
+              </a>
+            </li>
+           
+            <li><!-- SERVICES -->
+              <a href="#services">
+                SERVICES
+              </a>
+            </li>
+           
+            <li><!-- PORTFOLIO -->
+              <a href="#portfolio">
+                PORTFOLIO
+              </a>
+            </li>
+
+            <li><!-- NEWS -->
+              <a href="#news">
+                NEWS
+              </a>
+            </li>
+           
+            <li><!-- CLIENTS -->
+              <a href="#clients">
+                CLIENTS
+              </a>
+            </li>
+           
+            <li><!-- CONTACT -->
+              <a href="#contact">
+                CONTACT
+              </a>
+            </li>
+          
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+</div>
+<!-- /END OF TOP NAVIGATION BAR -->
+
+<br>
+<br>
+
+<!--QUOTE FORM-->
+
+<!--Add this style to set a fixed width for the buttons-->
+<style>
+  .btn {
+    width: 150px;
+    /* Adjust the width according to your preference */
+  }
+</style>
+
+<section>
+    <div class="container">
+        <form class="validate" id="quote-form">
+            <div class="select-building-type card card-default">
+                <div class="card-heading card-heading-transparent">
+                    <label for="building-type" class="card-title"> 
+                        <h3>
+                            <span style="color:rgb(10, 101, 160); font-weight:bolder"></span> Select Type of Building
+                        </h3> 
+                    </label>
+                </div>
+                <div class="card-block" style="margin: 20px">
+                    <select name="building-type" id="building-type" class="form-control pointer required" aria-label="Select Building Type">
+                        <option>---Select---</option>
+                        <option id="residential" value="residential">Residential</option>
+                        <option id="commercial" value="commercial">Commercial</option>
+                        <option id="industrial" value="industrial">Industrial</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+<div class="estimate-num-elv card card-default" style="display: none;" aria-hidden="true"> 
+    <div class="card-heading step-description">
+        <h3>
+            <span style="color:rgb(10, 101, 160); font-weight:bolder">Provide Building Information</span>
+        </h3>
+        <p class="text-muted">Provide Building Information</p>
+    </div>
+   
+</div>
+
+<div class="card-block">
+    <div class="row d-none" style="margin: 20px">
+        <div id="number-of-floors" class="col-4 d-none residential commercial industrial hybrid">
+            <label for="floors-input"><h4>Number of Floors</h4></label>
+            <input type="number" id="floors-input" oninput="this.value = Math.abs(this.value)" class="form-control" required aria-label="Enter the number of floors in the building">
+            <small class="form-text text-muted">Please enter a positive number.</small>
+        </div>
+    </div>
+</div>
+
+<div class="card-block">
+    <div class="row d-none" style="margin: 20px">
+        <div id="number-of-floors" class="col-4 d-none residential commercial industrial hybrid">
+            <label for="floors-input"><h4>Number of Floors</h4></label>
+            <input type="number" id="floors-input" oninput="this.value = Math.abs(this.value)" class="form-control" required aria-label="Enter the number of floors in the building">
+        </div>
+    </div>
+</div>
+
+<div id="number-of-elevators" class="col-4 d-none commercial">
+    <label for="elevators-input"><h4>Number of Elevators</h4></label>
+    <input type="number" id="elevators-input" class="form-control" oninput="this.value = Math.abs(this.value)" required aria-label="Enter the number of elevators">
+</div>
+
+<div id="maximum-occupancy" class="col-4 d-none industrial hybrid">
+    <label><h4>Maximum Occupancy</h4></label>
+    <input type="number" class="form-control" oninput="this.value = Math.abs(this.value)" required>
+</div>
+
+<div class="row" style="margin: 20px" id="elevator-amount">
+    <div class="col-6">
+        <label><h4 style="margin-bottom: 0px">Number of Elevators Required (Minimum of 1):</h4></label>
+        <input class="form-control" type="text" readonly>
+        <p style="margin-bottom: 0px;">* With exception for commercial buildings</p>
+    </div>
+</div>
+</div>		
+
+							
+</div>
+                            
+</div>
+
+<div class="product-line card card-default" style="display: none;">
+    <div class="card-heading card-heading-transparent">
+        <h3><span style="color:rgb(10, 101, 160); font-weight:bolder"></span> Select Product Line</h3>
+        <p style="margin-bottom: 0px;"></p>
+        <p style="color: rgb(170, 69, 69); display: none; margin-bottom: 0px;" id="warning">Complete Step 2 to Estimate Price</p> 
+    </div>
+
+    <div class="card-block">
+        <div class='radio-btns row'>
+            <div class="col-4" style="display:flex; justify-content: center;">
+                <label class="standard radio">
+                    <input type="radio" name="product-line" id="standard">
+                    <i></i> STANDARD
+                </label>
+            </div>
+            <div class="col-4" style="display:flex; justify-content: center;">
+                <label class="premium radio">
+                    <input type="radio" name="product-line" id="premium">
+                    <i></i> PREMIUM
+                </label>
+            </div>
+            <div class="col-4" style="display:flex; justify-content: center;">
+                <label class="excelium radio">
+                    <input type="radio" name="product-line" id="excelium">
+                    <i></i> EXCELIUM
+                </label>
+            </div>
+        </div>
+    </div>
+    
+    <div class="final-pricing-display card card-default" style="display: none;">
+        <div class="card-heading card-heading-transparent">
+            <h3><span style="color:rgb(10, 101, 160); font-weight:bolder"></span>Estimated Pricing</h3>
+            <p style="margin-bottom: 0px;"></p>
+            <p style="color: rgb(170, 69, 69); display: none; margin-bottom: 0px;" id="warning"></p> 
+        </div>
+
+        <div class="final-pricing-display card card-default" style="display: none;">
+            <div class="card-heading card-heading-transparent">
+                <h3><span style="color:rgb(10, 101, 160); font-weight:bolder">Estimated Pricing</h3>
+                <p style="color: rgb(170, 69, 69); display: none; margin-bottom: 0px;" id="warning"></p> 
+            </div>
+        </div>
+
+        <div class="card-block">
+            <div class="pricing-display row mega-price-table" style="margin: 20px">
+                <div id="elevator-unit-price" class="col-md-3 col-sm-6 block">
+                    <div class="pricing">
+                        <div class="pricing-head">
+                            <h3>Unit Price</h3>
+                            <small>for Product Line</small>
+                        </div>
+                        <h4>
+                            <input type="text" class="form-control" aria-label="Unit price for the selected product line" style="background: none; text-align: center; border: none; font-size: x-large" readonly>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="elevator-total-price" class="col-md-3 col-sm-6 block">
+            <div class="pricing">
+                <div class="pricing-head">
+                    <h3>Elevator Cost</h3>
+                    <small>Based on number of Elevators Required</small>
+                </div>
+                <h4>
+                    <input type="text" class="form-control" aria-label="Total cost based on the number of elevators required" style="background: none; text-align: center; border: none; font-size: x-large" readonly>
+                </h4>
+            </div>
+        </div>
+        
+        <div id="installation-fees" class="col-md-3 col-sm-6 block">
+            <div class="pricing">
+                <div class="pricing-head">
+                    <h3>Installation Fee</h3>
+                    <small>Percentage of Elevator Cost</small>
+                </div>
+                <h4>
+                    <input type="text" class="form-control" aria-label="Installation fee as a percentage of elevator cost" style="background: none; text-align: center; border: none; font-size: x-large" readonly>
+                </h4>
+            </div>
+        </div>
+        
+        <div id="final-price" class="col-md-3 col-sm-6 block">
+            <div class="pricing">
+                <div class="pricing-head">
+                    <h3>Total Cost</h3>
+                    <small>Elevator plus Installation Fee</small>					
+                </div>
+                <h4>
+                    <input type="text" class="form-control" aria-label="Total cost including elevator and installation fees" style="background: none; text-align: center; border: none; font-size: x-large" readonly>
+                </h4>
+            </div>
+        </div>
+<!--END OF QUOTE FORM-->
+
+<!-- FOOTER -->
+<footer id="footer">
+    <div class="container">
+  
+  
+      <div class="row">
+  
+        <!-- col #1 -->
+        <div class="col-md-8">
+  
+          <h3 class="letter-spacing-1">WHY US?</h3>
+  
+          <!-- Small Description -->
+          <p>Since 1976, Rocket Elevators has set the standard for residential and corporate elevators. Seamlessly blending cutting-edge technology with sleek design, we ensure our customers ascend to the top in style and safety.With Rocket Elevators, reaching the top is not just a destination—it's an experience defined by innovation, reliability, and elegance.
+  
+          </p>
+          <h2>(800) 123-4567</h2>
+        </div>
+        <!-- /col #1 -->
+  
+        <!-- col #2 -->
+        <div class="col-md-4">
+          <h3 class="letter-spacing-1">KEEP IN TOUCH</h3>
+  
+          <!-- Newsletter Form -->
+          <p>Subscribe to Our Newsletter to get Important News & Offers</p>
+  
+          <form class="validate" action="php/newsletter.php" method="post" data-success="Subscribed! Thank you!"
+            data-toastr-position="bottom-right">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+              <input type="email" id="email" name="email" class="form-control required" placeholder="Enter your Email">
+              <span class="input-group-btn">
+                <button class="btn btn-success" type="submit">Subscribe</button>
+              </span>
+            </div>
+          </form>
+          <!-- /Newsletter Form -->
+  
+  
+        </div>
+        <!-- /col #2 -->
+  
+      </div>
+  
+  
+    </div>
+  
+    <div class="copyright">
+      <div class="container">
+        <ul class="float-right m-0 list-inline mobile-block">
+          <li><a href="#">Terms &amp; Conditions</a></li>
+          <li>&bull;</li>
+          <li><a href="#">Privacy</a></li>
+        </ul>
+        &copy; All Rights Reserved, Company LTD
+      </div>
+    </div>
+  
+  </footer>
+  <!--END OF FOOTER -->
+  
+  </div>
+  <!-- /wrapper -->
+  
+  
+  
+  
+  <!-- JAVASCRIPT FILES -->
+  <script>var plugin_path = 'assets/plugins/';</script>
+  <script src="assets/plugins/jquery/jquery-3.3.1.min.js"></script>
+  
+  <script src="assets/js/scripts.js"></script>
+  
+  <!-- QUOTE FORM JAVASCRIPT-->
+  
+  <script src="assets/js/quote.js"></script>
+  
+  </body>
+  
+  </html>
+        

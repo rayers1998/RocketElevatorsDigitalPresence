@@ -31,20 +31,20 @@ const qualityContainer = document.getElementById("qualityContainer")
 const outputContainer = document.getElementById("outputContainer")
 
 
-//Function to calculate "Elevators Required" - Residential Service 
+//Function to calculate "Number of Elevators Needed" - Residential Service 
 function calcRes() {
   const averageNumberOfApartments = Math.ceil(Number(apartmentInput.value)) / Math.ceil(Number(floorInput.value));
   const numberOfResElevators = Math.ceil(averageNumberOfApartments / 6);
   const numberOfResBanks = Math.ceil(Number(floorInput.value / 20));
   console.log (averageNumberOfApartments, numberOfResElevators, numberOfResBanks);
   
-  return elevatorOutput.value = Math.ceil(numberOfResElevators * numberOfResBanks);}
+  return numberOfElevatorsNeededoutput.value = Math.ceil(numberOfResElevators * numberOfResBanks);}
 //"If the type of building is Residential, divide the number of apartments by the number of floors to obtain an average number of apartments per floor and require an elevator for every 6 apartments per floor.
 //If the building has more than 20 stories, it is necessary to provide an additional elevator bank and thus double the number of elevators. 
 //A new elevator bank is therefore added to each new group of 20 stories."
 
 
-//Function to calculate "Elevators Required" - Commercial Service 
+//Function to calculate "Number of Elevators Needed" - Commercial Service 
 function calcCom() {
   const numOfTotalOccupants = (Number(maxOccupancyOfEachFloor)) * (Number(numberOfFloors));
   const numberOfComElevatorBanks = (Number(numOfTotalOccupants) / 200);
@@ -58,7 +58,7 @@ function calcCom() {
 //For commercial buildings, to obtain the number of freight elevators needed use the number of floors divided by 10 plus one."
 
 
-//Function to calculate "Elevators Required" - Industrial Service
+//Function to calculate "Number of Elevators Needed" - Industrial Service
 function calcInd() {
   const numberOfElevators = (Number(numberOfElevators));
   console.log (numberOfElevators);
@@ -115,6 +115,8 @@ hideSheet()
 //-------------------------------------------------------------------------------------------------------------------------------------
 //STEP 2 add event listeners!
 
+
+// RESIDENTIAL BUTTON
 // Event Listener for the residential button to be clicked
 residentialButton.addEventListener("click", () => {
   console.log("Residential button clicked");
@@ -127,7 +129,9 @@ residentialButton.addEventListener("click", () => {
   outputContainer.style.display = "block";
   qualityContainer.style.display = "block";
 
-
+  resetValues();
+  console.log("You clicked the residential button!");
+  })
   // numberOfElevators.style.display = "none";
   // numberOfApartments.style.display = "block";
   // commercialButton.style.display = "block";
@@ -160,14 +164,8 @@ residentialButton.addEventListener("click", () => {
   //       console.log("I did residentiaL math");
   //     })
 
-  resetValues();
-  console.log("You clicked the residential button!");
-})
 
-
-  
-
-
+// COMMERCIAL BUTTON
 // Event listener for the commercial button to be clicked
 commercialButton.addEventListener("click", () => {
   console.log("commercial button clicked");
@@ -184,6 +182,8 @@ commercialButton.addEventListener("click", () => {
   console.log("You clicked the commercial button!");
 })
 
+
+//INDUSTRIAL BUTTON
 // Event listener for the industrial button to be clicked
 industrialButton.addEventListener("click", () => {
   console.log("industrial button clicked");
@@ -200,32 +200,44 @@ industrialButton.addEventListener("click", () => {
   console.log("You clicked the industrial button!");
 })
 
-function priceCheck(){
+
+
+
+
+//STANDARD BUTTON
+// Event Listener for the standard button to be clicked
 standardButton.addEventListener("click", () => {
-unitPriceOutput.value = 8000;
-installFeeOutput.value = 1.1;
-finalPrice()
-console.log("Standard")
+   unitPriceOutput.value = 8000;
+   installFeeOutput.value = 1.1;
+   finalPrice()
+   console.log("Standard")
 })
 
+
+//PREMIUM BUTTON
+// Event Listener for the premium button to be clicked
 premiumButton.addEventListener("click", () => {
   unitPriceOutput.value = 12000;
   installFeeOutput.value = 1.15;
   finalPrice()
+  console.log("Premium")
 })
 
+
+//EXCELIUM BUTTON
+// Event Listener for the excelium button to be clicked
 exceliumButton.addEventListener("click", () => {
   unitPriceOutput.value = 15000;
   installFeeOutput.value = 1.2;
   finalPrice()
+  console.log("Excelium")
 })
-}
-priceCheck()
+
 
 // -------------------------------------------------------------------------------------------------------------
 //STEP 3
 
-// functions to set up product tier
+// functions to set up product type
 function qualityTypeTypeSetUp(qualityType) {
   if (qualityType === 'standard') {
     return 'product standard tier set up configuration';
