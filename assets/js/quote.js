@@ -9,6 +9,11 @@ const numberOfApartments = document.getElementById("apartments-input");
 const maxOccupancyOfEachFloor = document.getElementById("occupancy-input");
 const numberOfElevators = document.getElementById("elevators-input");
 
+const floorNumber = document.getElementById("number-of-floors")
+const maximumOccupancy = document.getElementById("maximum-occupancy")
+const apartmentnumber = document.getElementById("number-of-apartments")
+const elevatornumber = document.getElementById ("number-of-elevators")
+
 // Variables for Radio Section
 const standardButton = document.getElementById("standard");
 const premiumButton = document.getElementById("premium");
@@ -66,10 +71,11 @@ function calcInd() {
 
 // Residential Button
 residentialButton.addEventListener("click", () => {
-  numberOfFloors.style.display = "block";
-  numberOfApartments.style.display = "block";
-  maxOccupancyOfEachFloor.style.display = "none";
-  numberOfElevators.style.display = "none";
+  floorNumber.style.display = "block";
+  apartmentnumber.style.display = "block";
+  maximumOccupancy.style.display = "none";
+  elevatornumber.style.display = "none";
+
 
   inputContainer.style.display = "block";
   outputContainer.style.display = "block";
@@ -82,10 +88,10 @@ residentialButton.addEventListener("click", () => {
 
 // Commercial Button
 commercialButton.addEventListener("click", () => {
-  numberOfFloors.style.display = "block";
-  numberOfApartments.style.display = "none";
-  maxOccupancyOfEachFloor.style.display = "block";
-  numberOfElevators.style.display = "none";
+  floorNumber.style.display = "block";
+  apartmentnumber.style.display = "none";
+  maximumOccupancy.style.display = "block";
+  elevatornumber.style.display = "none";
 
   inputContainer.style.display = "block";
   outputContainer.style.display = "block";
@@ -98,10 +104,10 @@ commercialButton.addEventListener("click", () => {
 
 // Industrial Button
 industrialButton.addEventListener("click", () => {
-  numberOfFloors.style.display = "none";
-  numberOfApartments.style.display = "none";
-  maxOccupancyOfEachFloor.style.display = "none";
-  numberOfElevators.style.display = "block";
+  floorNumber.style.display = "none";
+  apartmentnumber.style.display = "none";
+  maximumOccupancy.style.display = "none";
+ elevatornumber.style.display = "block";
 
   inputContainer.style.display = "block";
   outputContainer.style.display = "block";
