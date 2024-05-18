@@ -135,7 +135,7 @@ standardButton.addEventListener("click", () => {
   installFeeOutput.value = 1.1;
   finalPrice();  
  });
- 
+
  function standardButtonPressed() {
   // Create a formatter for US dollar currency
   const dollarUSLocale = new Intl.NumberFormat('en-US', {
@@ -166,7 +166,7 @@ exceliumButton.addEventListener("click", () => {
 
 // Functions for calculations and updates
 
-// Function to calculate the total price
+git// Function to calculate the total price
 function finalPrice() {
   const totalCost = Number(elevatorOutput.value) * Number(unitPriceOutput.value) * Number(installFeeOutput.value);
   finalCostOutput.value = totalCost.toFixed(2);
