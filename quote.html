@@ -47,7 +47,7 @@
       </button>
 
       <!-- LOGO -->
-      <a class="logo float-left scrollTo" href="#top">
+      <a class="logo float-left" href="index.html">
         <img src="assets/images/rocketElevators/rocketLogo.png" alt="" />
       </a>
 
@@ -58,37 +58,37 @@
           <ul id="topMain" class="nav nav-pills nav-main nav-onepage">
            
             <li class="active"><!-- HOME -->
-              <a href="#home">
+              <a href="index.html">
                 HOME
               </a>
             </li>
            
             <li><!-- SERVICES -->
-              <a href="#services">
+              <a href="index.html#services">
                 SERVICES
               </a>
             </li>
            
             <li><!-- PORTFOLIO -->
-              <a href="#portfolio">
+              <a href="index.html#portfolio">
                 PORTFOLIO
               </a>
             </li>
 
             <li><!-- NEWS -->
-              <a href="#news">
+              <a href="index.html#news">
                 NEWS
               </a>
             </li>
            
             <li><!-- CLIENTS -->
-              <a href="#clients">
+              <a href="index.html#clients">
                 CLIENTS
               </a>
             </li>
            
             <li><!-- CONTACT -->
-              <a href="#contact">
+              <a href="index.html#contact">
                 CONTACT
               </a>
             </li>
@@ -113,6 +113,37 @@
     /* Adjust the width according to your preference */
   }
 </style>
+
+<!--Add this style to keep fixed margins and fixed boxed with for input and output-->
+<style>
+  body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+  }
+
+  .output-field {
+      margin-top: 20px;
+  }
+
+  .output-field label,
+  .output-field input,
+  .output-field output {
+      display: block;
+      margin-left: 250px;
+  }
+
+  .output-field input,
+  .output-field output {
+
+      width: 300px; <!--Set the width of the input and output boxes-->
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      background-color: #f9f9f9;
+  }
+</style>
+
 
 
 <!--Building Type Selection-->
@@ -144,7 +175,7 @@
   </style>
   <div id="number-of-floors" class="input-field">
     <label>How many floors are in the building?</label>
-    <input id="floors-input" type="text" placeholder="" />
+    <input id="floors-input" type="number" min="1" max="1000" placeholder="" />
   </div>
 
   <br>
@@ -163,7 +194,7 @@
   </style>
   <div id="number-of-apartments" class="input-field">
     <label>How many apartments are in the building?</label>
-    <input id="apartments-input" type="text" placeholder="" />
+    <input id="apartments-input" type="number" min="1" max="1000" placeholder="" />
   </div>
 
   <br>
@@ -182,7 +213,7 @@
   </style>
   <div id="maximum-occupancy" class="input-field">
     <label>What is the maximum occupancy for a floor in the building?</label>
-    <input id="occupancy-input" type="text" placeholder="" />
+    <input id="occupancy-input" type="number" min="1" max="1000" type="text" placeholder="" />
   </div>
 
   <br>
@@ -201,7 +232,7 @@
   </style>
   <div id="number-of-elevators" class="input-field">
     <label>How many elevators service the building?</label>
-    <input id="elevators-input" type="text" placeholder="" />
+    <input id="elevators-input" type="number" min="1" max="1000" placeholder="" />
   </div>
 </div>
 
@@ -219,81 +250,31 @@
 
 <!--OUTPUT FIELDS-->
 <div id="outputContainer">
-  <style>
-    #number-of-elevators-output label {
-      display: block;
-      margin-left: 250px;
-      /* Adjust this value to increase or decrease the indentation */
-    }
-
-    #elevators-needed-output {
-      margin-left: 250px;
-      /* Adjust this value to increase or decrease the indentation */
-    }
-  </style>
-  <div id="number-of-elevators-output">
-    <label>Number of Elevators Needed</label>
-    <input id="elevators-needed-output" type="text" readonly>
+  <div id="number-of-elevators-output" class="output-field">
+      <label for="elevators-needed-output">Number of Elevators Needed</label>
+      <input id="elevators-needed-output" type="text" readonly>
   </div>
 
-  <br>
-
-  <style>
-    #unit-price-output label {
-      display: block;
-      margin-left: 250px;
-      /* Adjust this value to increase or decrease the indentation */
-    }
-
-    #unit-price-each-elevator {
-      margin-left: 250px;
-      /* Adjust this value to increase or decrease the indentation */
-    }
-  </style>
-  <div id="unit-price-output">
-    <label>Unit Price of Each Elevator</label>
-    <input id="unit-price-each-elevator" type="text" readonly>
+  <div id="unit-price-output" class="output-field">
+      <label for="unit-price-each-elevator">Unit Price of Each Elevator</label>
+      <input id="unit-price-each-elevator" type="text" readonly>
   </div>
 
-  <br>
-
-  <style>
-    #installation-fees-output label {
-      display: block;
-      margin-left: 250px;
-      /* Adjust this value to increase or decrease the indentation */
-    }
-
-    #installation-fees {
-      margin-left: 250px;
-      /* Adjust this value to increase or decrease the indentation */
-    }
-  </style>
-  <div id="installation-fees-output">
-    <label>Installation Fees</label>
-    <input id="installation-fees" type="text" readonly>
+  <div id="installation-fees-output" class="output-field">
+      <label for="installation-fees">Installation Fees</label>
+      <input id="installation-fees" type="text" readonly>
   </div>
 
-  <br>
+  <div id="final-cost-output" class="output-field">
+      <label for="final-cost">Final Cost</label>
+      <input id="final-cost" type="text" readonly>
 
-  <style>
-    #final-cost-output label {
-      display: block;
-      margin-left: 250px;
-      /* Adjust this value to increase or decrease the indentation */
-    }
-
-    #final-cost {
-      margin-left: 250px;
-      /* Adjust this value to increase or decrease the indentation */
-    }
-  </style>
-  <div id="final-cost-output">
-    <label>Final Cost</label>
-    <input id="final-cost" type="text" readonly>
-  </div>
+</div>
 </div>
 
+
+<br>
+<br>
 <br>
 
 
@@ -377,6 +358,56 @@
 <!-- QUOTE FORM JAVASCRIPT-->
 
 <script src="assets/js/quote.js"></script>
+
+
+<!-- Function to format the price -->
+<script>
+  function formatPrice(price) {
+    // Create a formatter for US dollar currency
+    const dollarUSLocale = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD'
+    });
+
+    // Format the price
+    return dollarUSLocale.format(price);
+  }
+
+  function setPrice(unitPrice, installationFees, finalCost) {
+    // Set the formatted prices as the values of the input elements
+    document.getElementById('unit-price-each-elevator').value = formatPrice(unitPrice);
+    document.getElementById('installation-fees').value = formatPrice(installationFees);
+    document.getElementById('final-cost').value = formatPrice(finalCost);
+  }
+
+  // Calculate installation fees and final cost based on the unit price
+  function calculateCosts(unitPrice) {
+    const installationFees = unitPrice * 0.1; // Example: 10% of the unit price
+    const finalCost = unitPrice + installationFees;
+    return [installationFees, finalCost];
+  }
+
+  // Add event listeners to the buttons
+  document.getElementById('standard').addEventListener('click', () => {
+    const unitPrice = 8000;
+    const [installationFees, finalCost] = calculateCosts(unitPrice);
+    setPrice(unitPrice, installationFees, finalCost);
+  });
+
+  document.getElementById('premium').addEventListener('click', () => {
+    const unitPrice = 12000;
+    const [installationFees, finalCost] = calculateCosts(unitPrice);
+    setPrice(unitPrice, installationFees, finalCost);
+  });
+
+  document.getElementById('excelium').addEventListener('click', () => {
+    const unitPrice = 15000;
+    const [installationFees, finalCost] = calculateCosts(unitPrice);
+    setPrice(unitPrice, installationFees, finalCost);
+  });
+</script>
+
+
 
 </body>
 

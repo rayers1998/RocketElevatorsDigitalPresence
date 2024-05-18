@@ -30,6 +30,8 @@ const inputContainer = document.getElementById("inputContainer");
 const qualityContainer = document.getElementById("qualityContainer");
 const outputContainer = document.getElementById("outputContainer");
 
+
+
 // Function to hide elements initially
 function hideSheet() {
   inputContainer.style.display = "none";
@@ -117,14 +119,36 @@ industrialButton.addEventListener("click", () => {
   numberOfElevators.addEventListener("input", calcInd);
 });
 
+//Let means it can change
+//Let has 3 Purposes 
+// 1. get elements by id's
+// 2. To dispplay information to user
+// 3. To do calculations
+//'let' in this case displays information to user. Also maintains accurate calcualtions while adding currency format. 
+let pricePerIndividualElevator = 0
+
 // Radio Button Event Listeners
 
 // Standard Button
 standardButton.addEventListener("click", () => {
   unitPriceOutput.value = 8000;
   installFeeOutput.value = 1.1;
-  finalPrice();
-});
+  finalPrice();  
+ });
+ 
+ function standardButtonPressed() {
+  // Create a formatter for US dollar currency
+  const dollarUSLocale = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD'
+  });
+
+  // Format the price
+  const formattedPrice = dollarUSLocale.format(8000);
+
+  // Set the formatted price as the value of the input element
+  document.getElementById('summaryPriceofEachElevator').value = formattedPrice;
+}
 
 // Premium Button
 premiumButton.addEventListener("click", () => {
@@ -154,6 +178,9 @@ function updateTotalCost() {
     finalPrice();
   }
 }
+
+
+
 
 // Function to reset form values
 function resetValues() {
@@ -192,3 +219,4 @@ function selectButton2(selectedId) {
     }
   });
 }
+
