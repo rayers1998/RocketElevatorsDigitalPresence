@@ -49,8 +49,8 @@ function calcRes() {
   const numberOfResBanks = Math.ceil(Number(numberOfFloors.value) / 20);
   const totalResElevators = Math.ceil(numberOfResElevators * numberOfResBanks);
   elevatorOutput.value = totalResElevators;
-  updateTotalCost();
-}
+ updatefinalCost();
+ }
 
 // Commercial Service Calculation
 function calcCom() {
@@ -59,15 +59,18 @@ function calcCom() {
   const numberOfComBanksRequired = Math.ceil(Number(numberOfFloors.value) / 10);
   const totalComElevators = Math.ceil(numberOfComElevatorBanks * numberOfComBanksRequired);
   elevatorOutput.value = totalComElevators;
-  updateTotalCost();
+  updatefinalCost();
 }
 
 // Industrial Service Calculation
 function calcInd() {
   const totalIndElevators = Math.ceil(Number(numberOfElevators.value));
   elevatorOutput.value = totalIndElevators;
-  updateTotalCost();
-}
+  updatefinalCost();
+} 
+
+
+
 
 // Event listeners for buttons
 
@@ -133,7 +136,7 @@ let pricePerIndividualElevator = 0
 standardButton.addEventListener("click", () => {
   unitPriceOutput.value = 8000;
   installFeeOutput.value = 1.1;
-  finalPrice();  
+  finalcost();  
  });
 
  function standardButtonPressed() {
@@ -154,32 +157,29 @@ standardButton.addEventListener("click", () => {
 premiumButton.addEventListener("click", () => {
   unitPriceOutput.value = 12000;
   installFeeOutput.value = 1.15;
-  finalPrice();
+  finalcost();
 });
 
 // Excelium Button
 exceliumButton.addEventListener("click", () => {
   unitPriceOutput.value = 15000;
   installFeeOutput.value = 1.2;
-  finalPrice();
+  finalcost();
 });
 
-// Functions for calculations and updates
 
-git// Function to calculate the total price
-function finalPrice() {
-  const totalCost = Number(elevatorOutput.value) * Number(unitPriceOutput.value) * Number(installFeeOutput.value);
-  finalCostOutput.value = totalCost.toFixed(2);
+// Function to calculate the final cost
+function finalcost() {
+  const finalCost = Number(elevatorOutput.value) * Number(unitPriceOutput.value) + Number(installFeeOutput.value);
+  
 }
 
-// Function to update the total cost
-function updateTotalCost() {
+// Functions for calculations and updates
+function updatefinalCost() {
   if (elevatorOutput.value && unitPriceOutput.value && installFeeOutput.value) {
-    finalPrice();
+    finalcost();
   }
 }
-
-
 
 
 // Function to reset form values
