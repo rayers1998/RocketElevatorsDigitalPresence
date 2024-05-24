@@ -146,7 +146,7 @@
 
 
 
-<!--Building Type Selection-->
+<!--BUILDING TYPE SELECTION-->
 
 <div class="container" id="building-type">
   <h2 class="question-text">What type of building are you interested in?</h2>
@@ -157,41 +157,15 @@
 
 <br>
 
-<!--Input Fields-->
-
-
+<!--START OF INPUT FIELDS-->
 <div id="inputContainer">
-  <style>
-    .input-field label {
-      display: block;
-      margin-left: 250px;
-      /* Adjust this value to increase or decrease the indentation */
-    }
-
-    #floors-input {
-      margin-left: 250px;
-      /* Adjust this value to increase or decrease the indentation */
-    }
-  </style>
-  <div id="number-of-floors" class="input-field">
+    
+   <div id="number-of-floors" class="input-field">
     <label>How many floors are in the building?</label>
     <input id="floors-input" type="number" min="1" max="1000" placeholder="" />
   </div>
-
   <br>
-
-  <style>
-    .input-field label {
-      display: block;
-      margin-left: 250px;
-      /* Adjust this value to increase or decrease the indentation */
-    }
-
-    #apartments-input {
-      margin-left: 250px;
-      /* Adjust this value to increase or decrease the indentation */
-    }
-  </style>
+ 
   <div id="number-of-apartments" class="input-field">
     <label>How many apartments are in the building?</label>
     <input id="apartments-input" type="number" min="1" max="1000" placeholder="" />
@@ -199,37 +173,13 @@
 
   <br>
 
-  <style>
-    .input-field label {
-      display: block;
-      margin-left: 250px;
-      /* Adjust this value to increase or decrease the indentation */
-    }
-
-    #occupancy-input {
-      margin-left: 250px;
-      /* Adjust this value to increase or decrease the indentation */
-    }
-  </style>
   <div id="maximum-occupancy" class="input-field">
     <label>What is the maximum occupancy for a floor in the building?</label>
     <input id="occupancy-input" type="number" min="1" max="1000" type="text" placeholder="" />
   </div>
 
   <br>
-
-  <style>
-    .input-field label {
-      display: block;
-      margin-left: 250px;
-      /* Adjust this value to increase or decrease the indentation */
-    }
-
-    #elevators-input {
-      margin-left: 250px;
-      /* Adjust this value to increase or decrease the indentation */
-    }
-  </style>
+  
   <div id="number-of-elevators" class="input-field">
     <label>How many elevators service the building?</label>
     <input id="elevators-input" type="number" min="1" max="1000" placeholder="" />
@@ -237,6 +187,7 @@
 </div>
 
 <br>
+
 <div id="qualityContainer">
   <div class="container" id="building-type">
     <h2 class="question-text">What service package are you requesting?</h2>
@@ -245,10 +196,32 @@
     <button class="btn btn-danger btn-lg" type="button" id="excelium" value="excelium">Excelium</button>
   </div>
 </div>
+<!--/END OF INPUT FIELDS-->
 
 <br>
 
-<!--OUTPUT FIELDS-->
+<!--JS formatting: adjust px value to increase or decrease text and text box indentation under building type-->
+<style>
+  .input-field label {
+    margin-left: 250px;
+  }
+  #floors-input {
+    margin-left: 250px;
+  }
+  #apartments-input {
+   margin-left: 250px;
+  } 
+  #occupancy-input {
+   margin-left: 250px;
+  }
+  #elevators-input {
+   margin-left: 250px;
+  }  
+</style>
+<!--/End of JS formattiong-->
+
+
+<!--START OF OUTPUT FIELDS-->
 <div id="outputContainer">
   <div id="number-of-elevators-output" class="output-field">
       <label for="elevators-needed-output">Number of Elevators Needed</label>
@@ -264,7 +237,6 @@
       <label for="installation-fees">Installation Fee</label>
       <input id="installation-fees" type="text" readonly>
   </div>
-
   
   <div id="final-cost-output" class="output-field">
       <label for="final-cost">Final Cost</label>
@@ -272,6 +244,38 @@
 
 </div>
 </div>
+<!--/END OF OUTPUT FIELDS-->
+
+<!--JS formatting: adjust px value to increase or decrease text and text box indentation under service package request-->
+<style>
+  body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+  }
+
+  .output-field {
+      margin-top: 20px;
+  }
+
+  .output-field label,
+  .output-field input,
+  .output-field output {
+      display: block;
+      margin-left: 250px;
+  }
+
+  .output-field input,
+  .output-field output {
+
+      width: 300px; 
+      padding: 1px 2px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      background-color: #f9f9f9;
+  }
+</style>
+<!--/End of JS formattiong-->
 
 
 <br>
@@ -342,7 +346,7 @@
   </div>
 
 </footer>
-<!-- /FOOTER -->
+<!-- /END OF FOOTER -->
 
 </div>
 <!-- /wrapper -->
