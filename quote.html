@@ -114,7 +114,7 @@
   }
 </style>
 
-<!--Add this style to keep fixed margins and fixed boxed with for input and output-->
+<!--Add this style to keep fixed margins and fixed boxed width for input and output-->
 <style>
   body {
       font-family: Arial, sans-serif;
@@ -135,7 +135,7 @@
   .output-field input,
   .output-field output {
 
-      width: 300px; <!--Set the width of the input and output boxes-->
+      width: 300px; 
       padding: 10px;
       border: 1px solid #ccc;
       border-radius: 4px;
@@ -261,10 +261,11 @@
   </div>
 
   <div id="installation-fees-output" class="output-field">
-      <label for="installation-fees">Installation Cost</label>
+      <label for="installation-fees">Installation Fee</label>
       <input id="installation-fees" type="text" readonly>
   </div>
 
+  
   <div id="final-cost-output" class="output-field">
       <label for="final-cost">Final Cost</label>
       <input id="final-cost" type="text" readonly>
@@ -358,55 +359,6 @@
 <!-- QUOTE FORM JAVASCRIPT-->
 
 <script src="assets/js/quote.js"></script>
-
-
-<!-- Function to format the price -->
-<script>
-  function formatPrice(price) {
-    // Create a formatter for US dollar currency
-    const dollarUSLocale = new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD'
-    });
-
-    // Format the price
-    return dollarUSLocale.format(price);
-  }
-
-  function setPrice(unitPrice, installationFees, finalCost) {
-    // Set the formatted prices as the values of the input elements
-    document.getElementById('unit-price-each-elevator').value = formatPrice(unitPrice);
-    document.getElementById('installation-fees').value = formatPrice(installationFees);
-    document.getElementById('final-cost').value = formatPrice(finalCost);
-  }
-
-  // Calculate installation fees and final cost based on the unit price
-  function calculateCosts(unitPrice) {
-    const installationFees = unitPrice * 0.1; // Example: 10% of the unit price
-    const finalCost = unitPrice + installationFees;
-    return [installationFees, finalCost];
-  }
-
-  // Add event listeners to the buttons
-  document.getElementById('standard').addEventListener('click', () => {
-    const unitPrice = 8000;
-    const [installationFees, finalCost] = calculateCosts(unitPrice);
-    setPrice(unitPrice, installationFees, finalCost);
-  });
-
-  document.getElementById('premium').addEventListener('click', () => {
-    const unitPrice = 12000;
-    const [installationFees, finalCost] = calculateCosts(unitPrice);
-    setPrice(unitPrice, installationFees, finalCost);
-  });
-
-  document.getElementById('excelium').addEventListener('click', () => {
-    const unitPrice = 15000;
-    const [installationFees, finalCost] = calculateCosts(unitPrice);
-    setPrice(unitPrice, installationFees, finalCost);
-  });
-</script>
-
 
 
 </body>

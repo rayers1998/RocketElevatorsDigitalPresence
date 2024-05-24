@@ -64,7 +64,7 @@ function calcCom() {
 
 // Industrial Service Calculation
 function calcInd() {
-  const totalIndElevators = Math.ceil(Number(numberOfElevators.value));
+  const totalIndElevators = Math.ceil(Number(numberOfElevators.value) + 1);
   elevatorOutput.value = totalIndElevators;
   updatefinalCost();
 } 
@@ -122,13 +122,6 @@ industrialButton.addEventListener("click", () => {
   numberOfElevators.addEventListener("input", calcInd);
 });
 
-//Let means it can change
-//Let has 3 Purposes 
-// 1. get elements by id's
-// 2. To dispplay information to user
-// 3. To do calculations
-//'let' in this case displays information to user. Also maintains accurate calcualtions while adding currency format. 
-let pricePerIndividualElevator = 0
 
 // Radio Button Event Listeners
 
@@ -138,21 +131,7 @@ standardButton.addEventListener("click", () => {
   installFeeOutput.value = 1.1;
   finalcost();  
  });
-
- function standardButtonPressed() {
-  // Create a formatter for US dollar currency
-  const dollarUSLocale = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD'
-  });
-
-  // Format the price
-  const formattedPrice = dollarUSLocale.format(8000);
-
-  // Set the formatted price as the value of the input element
-  document.getElementById('summaryPriceofEachElevator').value = formattedPrice;
-}
-
+ 
 // Premium Button
 premiumButton.addEventListener("click", () => {
   unitPriceOutput.value = 12000;
@@ -170,17 +149,22 @@ exceliumButton.addEventListener("click", () => {
 
 // Function to calculate the final cost
 function finalcost() {
-  const finalCost = Number(elevatorOutput.value) * Number(unitPriceOutput.value) + Number(installFeeOutput.value);
-  
+const finalCost = Number(elevatorOutput.value) * Number(unitPriceOutput.value) * Number(installFeeOutput.value);
+unitPriceOutput.value = formatPrice(unitPriceOutput.value)
+finalCostOutput.value = formatPrice(finalCost);
 }
 
-// Functions for calculations and updates
-function updatefinalCost() {
-  if (elevatorOutput.value && unitPriceOutput.value && installFeeOutput.value) {
-    finalcost();
-  }
-}
+// Formats numbers into currency
+function formatPrice(price) {
+  // Create a formatter for US dollar currency
+  const dollarUSLocale = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD'
+  });
 
+  // Format the price
+  return dollarUSLocale.format(price);
+}
 
 // Function to reset form values
 function resetValues() {
@@ -194,29 +178,4 @@ function resetValues() {
   finalCostOutput.value = "";
 }
 
-// Function to toggle button displays
-function selectButton(selectedId) {
-  const allButtons = ['residential', 'commercial', 'industrial'];
-  allButtons.forEach(function(btnId) {
-    const button = document.getElementById(btnId);
-    if (btnId !== selectedId) {
-      button.style.display = 'none';
-    } else {
-      button.style.display = 'inline-block';
-    }
-  });
-}
-
-// Function to toggle button displays for quality types
-function selectButton2(selectedId) {
-  const allButtons = ['standard', 'premium', 'excelium'];
-  allButtons.forEach(function(btnId) {
-    const button = document.getElementById(btnId);
-    if (btnId !== selectedId) {
-      button.style.display = 'none';
-    } else {
-      button.style.display = 'inline-block';
-    }
-  });
-}
 
